@@ -49,8 +49,12 @@ public class StudentAdmissionController {
 	}
 	
 	@RequestMapping(value="/submitForm.html",method = RequestMethod.POST)
-	public String submitStudentForm(@ModelAttribute Student student1)
+	public String submitStudentForm(@ModelAttribute Student student1, BindingResult result)
 	{
+		if(result.hasErrors())
+		{
+			System.out.println(result.getAllErrors());
+		}
 		System.out.println("I am inside add  ");
 		System.out.println(student1.getUserId());
 		if(student1.getUserId()!=0)
@@ -89,8 +93,7 @@ public class StudentAdmissionController {
 	            
 				
 			System.out.println(studentList.isEmpty());
-			ModelAndView mv=new ModelAndView("forward:/Student.html","student",this.studDAO.getStudent(id));
-			mv.addObject("studentList",studentList);
+			
 			redirectAttributes.addFlashAttribute("student",this.studDAO.getStudent(id));
 	    	return "redirect:/Student.html";
 	    	
