@@ -16,6 +16,6 @@
         <put-attribute name="title" value="Student Form" />
         <put-attribute name="body" value="/WEB-INF/jsp/Student.jsp" />
     </definition>
-    
+      
  
 </tiles-definitions>
