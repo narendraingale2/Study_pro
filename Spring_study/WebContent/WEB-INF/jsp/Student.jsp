@@ -172,8 +172,8 @@
                     <td>${student.skillSet}</td>
                     <td>${student.address.street}</td>
                     <td>${student.address.city}</td>
-                    <td><a href="<c:url value='/edit/${student.userId}' />" >Edit</a></td>
-            		<td><a href="<c:url value='/remove/${student.userId}' />" >Delete</a></td>
+                    <td><a href="<c:url value='/edit/${student.userId}' />" ><img border="0"  src="resources\images\edit.png" width="50" height="30"></a></td></td>
+            		<td><a href="<c:url value='/remove/${student.userId}' />" ><img border="0"  src="resources\images\images.jpg" width="50" height="30"></a></td></a></td>
 </c:forEach>        
             </table>
         </div>          

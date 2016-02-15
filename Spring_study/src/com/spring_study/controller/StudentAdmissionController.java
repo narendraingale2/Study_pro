@@ -47,6 +47,18 @@ public class StudentAdmissionController {
 		return mv;
 				
 	}
+	@RequestMapping("/Test.html")
+	public ModelAndView getHandler1()
+	{
+		
+		ModelAndView mv=new ModelAndView("Test");
+		List<Student> studentList=studDAO.list();
+		mv.addObject("studentList", studentList);
+		System.out.println("I am here ");
+		logger.debug("This is debugging");
+		return mv;
+				
+	}
 	
 	@RequestMapping(value="/submitForm.html",method = RequestMethod.POST)
 	public String submitStudentForm(@ModelAttribute Student student1, BindingResult result)
