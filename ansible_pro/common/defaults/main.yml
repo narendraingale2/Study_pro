@@ -1,0 +1,4 @@
+---
+http_port: 80
+app_path: "{{ http_port * 2  }}"
+

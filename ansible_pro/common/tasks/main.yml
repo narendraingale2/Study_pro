@@ -1,0 +1,10 @@
+- name: This is from Common role
+  command: echo "This is echo from Common"
+- name: try to create a file from common roles 
+  template: 
+    src=files/httpd.j2 
+    dest=/var/test.conf
+  sudo: yes
+  notify:
+    - restart apache
+

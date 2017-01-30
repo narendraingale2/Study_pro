@@ -1,0 +1,38 @@
+---
+   - hosts: dc
+     
+     remote_user: ansible
+     tasks:
+      - name: "Disable SeLinux"
+        command: /sbin/setenforce 0
+        sudo: yes
+     
+      - name: "Install httpd"
+        yum: name=httpd state=latest
+        sudo: yes
+ 
+      - name: "Start HTTPD service"
+        service:
+          name: httpd
+          state: started
+        sudo: yes
+        tags: [ http, abcd  ]
+     
+      - name: try to create a file 
+        template: 
+          src=files/httpd.j2 
+          dest=/tmp/test.conf
+        notify:
+          - restart apache
+      - include: second.yml
+      
+     roles:
+        - { role: common, tags: ['common' ] }   
+        - { role: web }  
+        # - { role: abcd }
+     handlers:
+        - name: restart apache
+          service:
+            name: httpd
+            state: started
+          sudo: yes

@@ -1,0 +1,18 @@
+---
+    ###- tasks:
+        - name: Echo Test task
+          command: echo "This is tets task for include file"
+
+        - name: echo test task 2 
+          command: echo "This is test2 task for include file"
+
+        # - name: check httpd is running or not
+        #   command: /sbin/service htppd status
+        #   sudo: yes
+
+        - name: "Check service status"
+          service: 
+            name: httpd
+            state: started
+          sudo: yes
+    

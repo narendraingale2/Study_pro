@@ -1,0 +1,9 @@
+# - name: This is from Web role
+#   command: touch /tmp/abc.txt
+
+- name: Install java
+  yum: name=java state=latest
+  sudo: yes
+
+- name: Files module
+  file: name="abc.txt" path="/tmp/" state="touch"
